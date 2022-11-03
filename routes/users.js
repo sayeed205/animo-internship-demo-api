@@ -3,6 +3,7 @@ import {
   deleteSingleUser,
   getAllUsers,
   getSingleUser,
+  updateSingleWorkout,
 } from "../controllers/userController.js";
 
 import { Router } from "express";
@@ -17,8 +18,6 @@ router.post("/", createUser);
 
 router.delete("/:id", deleteSingleUser);
 
-router.patch("/:id", (req, res) => {
-  res.json({ user: "update a user" });
-});
+router.patch("/:id", updateSingleWorkout);
 
 export default router;

@@ -39,6 +39,18 @@ const createUser = async (req, res) => {
 };
 
 // update a existing user
+const updateSingleWorkout = async (req, res) => {
+  const { id } = req.params;
+
+  if (!isValidID(id))
+    return res.status(404).json({ error: "user id doesn't exist" });
+
+  const user = await User.findByIdAndUpdate(id, { ...req.body });
+
+  if (!user) return res.status(404).json({ error: "user doesn't exist" });
+
+  res.status(200).json(user);
+};
 
 // delete a existing user
 const deleteSingleUser = async (req, res) => {
@@ -54,4 +66,10 @@ const deleteSingleUser = async (req, res) => {
   res.status(200).json(user);
 };
 
-export { createUser, getAllUsers, getSingleUser, deleteSingleUser };
+export {
+  createUser,
+  getAllUsers,
+  getSingleUser,
+  deleteSingleUser,
+  updateSingleWorkout,
+};
