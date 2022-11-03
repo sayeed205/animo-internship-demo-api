@@ -1,5 +1,6 @@
 import {
   createUser,
+  deleteSingleUser,
   getAllUsers,
   getSingleUser,
 } from "../controllers/userController.js";
@@ -14,9 +15,7 @@ router.get("/:id", getSingleUser);
 
 router.post("/", createUser);
 
-router.delete("/:id", (req, res) => {
-  res.json({ user: "delete a user" });
-});
+router.delete("/:id", deleteSingleUser);
 
 router.patch("/:id", (req, res) => {
   res.json({ user: "update a user" });
